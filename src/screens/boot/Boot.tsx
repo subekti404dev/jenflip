@@ -2,9 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {ActivityIndicator, SafeAreaView, StyleSheet, Text} from 'react-native';
-import NavigationUtil from '../utils/NavigationUtil';
-import StorageKey from '../constants/StorageKeyConstant';
-import CredentialUtil from '../utils/CredentialUtil';
+import NavigationUtil from '../../utils/NavigationUtil';
+import StorageKey from '../../constants/StorageKeyConstant';
+import CredentialUtil from '../../utils/CredentialUtil';
 
 type ProfileScreenNavigationProp = StackNavigationProp<any>;
 

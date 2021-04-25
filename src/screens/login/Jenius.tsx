@@ -2,10 +2,10 @@ import React from 'react';
 import {Alert, Image, SafeAreaView} from 'react-native';
 import {Button, Col, Gap, Input, Padder, Row} from 'urip-rn-kit';
 import Spinner from 'react-native-loading-spinner-overlay';
-import Images from '../assets';
+import Images from '../../assets/images';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import StorageKey from '../constants/StorageKeyConstant';
-import NavigationUtil from '../utils/NavigationUtil';
+import StorageKey from '../../constants/StorageKeyConstant';
+import NavigationUtil from '../../utils/NavigationUtil';
 const JeniusSDK = require('jenius-sdk');
 
 interface Props {
@@ -52,7 +52,7 @@ export default function Jenius(props: Props) {
         JSON.stringify(credentials),
       );
       setLoading(false);
-      NavigationUtil.reset(props.navigation, 'Flip')
+      NavigationUtil.reset(props.navigation, 'Flip');
     } catch (error) {
       setLoading(false);
       Alert.alert('Error', error.message);
@@ -64,7 +64,7 @@ export default function Jenius(props: Props) {
       {screenIndex === 0 && <JeniusLogin onSubmit={onLogin} />}
       {screenIndex === 1 && <JeniusOTP onSubmit={onVerify} />}
 
-      <Spinner visible={loading} textContent={'Loading...'} textStyle={{}} />
+      <Spinner visible={loading} />
     </>
   );
 }
@@ -95,6 +95,7 @@ function JeniusLogin(props: any) {
             placeholder="Password"
             value={password}
             autoCapitalize={'none'}
+            secureTextEntry
             onChangeText={x => setPassword(x)}
           />
           <Gap vertical size={25} />

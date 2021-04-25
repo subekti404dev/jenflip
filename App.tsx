@@ -1,10 +1,10 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import Home from './src/screens/Home';
-import Boot from './src/screens/Boot';
-import Jenius from './src/screens/Jenius';
-import Flip from './src/screens/Flip';
+import Home from './src/screens/home/Home';
+import Boot from './src/screens/boot/Boot';
+import Jenius from './src/screens/login/Jenius';
+import Flip from './src/screens/login/Flip';
 
 const Stack = createStackNavigator();
 

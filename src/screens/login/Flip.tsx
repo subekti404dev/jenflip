@@ -2,10 +2,10 @@ import React from 'react';
 import {Alert, Image, SafeAreaView} from 'react-native';
 import {Button, Col, Gap, Input, Padder, Row} from 'urip-rn-kit';
 import Spinner from 'react-native-loading-spinner-overlay';
-import Images from '../assets';
+import Images from '../../assets/images';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import StorageKey from '../constants/StorageKeyConstant';
-import NavigationUtil from '../utils/NavigationUtil';
+import StorageKey from '../../constants/StorageKeyConstant';
+import NavigationUtil from '../../utils/NavigationUtil';
 const {FlipSDK} = require('flip-sdk');
 
 interface Props {
@@ -56,6 +56,7 @@ export default function Flip(props: Props) {
               placeholder="Password"
               value={password}
               autoCapitalize={'none'}
+              secureTextEntry
               onChangeText={x => setPassword(x)}
             />
             <Gap vertical size={25} />
@@ -70,7 +71,7 @@ export default function Flip(props: Props) {
         </Padder>
       </SafeAreaView>
 
-      <Spinner visible={loading} textContent={'Loading...'} textStyle={{}} />
+      <Spinner visible={loading} />
     </>
   );
 }
