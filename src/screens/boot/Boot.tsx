@@ -1,7 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {ActivityIndicator, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+} from 'react-native';
 import NavigationUtil from '../../utils/NavigationUtil';
 import StorageKey from '../../constants/StorageKeyConstant';
 import CredentialUtil from '../../utils/CredentialUtil';
@@ -33,7 +39,8 @@ const Boot = (props: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ActivityIndicator size={'large'} />
+      <StatusBar hidden />
+      <ActivityIndicator size={'large'} color="#42B14C" />
       <Text style={styles.loadingText}>Loading</Text>
     </SafeAreaView>
   );
@@ -44,6 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+    backgroundColor: '#FFF',
   },
   loadingText: {
     marginTop: 10,

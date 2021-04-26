@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Image, SafeAreaView} from 'react-native';
+import {Alert, Image, SafeAreaView, StatusBar} from 'react-native';
 import {Button, Col, Gap, Input, Padder, Row} from 'urip-rn-kit';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Images from '../../assets/images';
@@ -35,7 +35,8 @@ export default function Flip(props: Props) {
 
   return (
     <>
-      <SafeAreaView>
+      <StatusBar backgroundColor={'#FFF'} />
+      <SafeAreaView style={{backgroundColor: '#FFF'}}>
         <Padder all={20}>
           <Col alignCenter>
             <Image

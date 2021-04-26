@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Image, SafeAreaView} from 'react-native';
+import {Alert, Image, SafeAreaView, StatusBar} from 'react-native';
 import {Button, Col, Gap, Input, Padder, Row} from 'urip-rn-kit';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Images from '../../assets/images';
@@ -61,6 +61,8 @@ export default function Jenius(props: Props) {
 
   return (
     <>
+      <StatusBar backgroundColor={'#FFF'} />
+
       {screenIndex === 0 && <JeniusLogin onSubmit={onLogin} />}
       {screenIndex === 1 && <JeniusOTP onSubmit={onVerify} />}
 
@@ -74,7 +76,7 @@ function JeniusLogin(props: any) {
   const [password, setPassword] = React.useState('');
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: '#FFF'}}>
       <Padder all={20}>
         <Col alignCenter>
           <Image
@@ -120,7 +122,7 @@ function JeniusOTP(props: any) {
   const [otp, setOtp] = React.useState('');
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: '#FFF'}}>
       <Padder all={20}>
         <Col alignCenter>
           <Image
