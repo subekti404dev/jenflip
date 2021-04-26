@@ -76,7 +76,7 @@ export default function Home(props: any) {
   };
 
   const HistoryLoader = (props: any) => {
-    const width = utils.sizeMatters.scale(props.width || 364);
+    const width = utils.sizeMatters.scale(props.width || 320);
     const height = (50 / 364) * width;
     const Loader = () => (
       <ContentLoader
@@ -115,7 +115,7 @@ export default function Home(props: any) {
   };
 
   const QuickLoader = (props: any) => {
-    const width = utils.sizeMatters.scale(props.width || 340);
+    const width = utils.sizeMatters.scale(props.width || 320);
     const height = (60 / 225) * width;
     if (props.show) {
       return (
