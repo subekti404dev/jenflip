@@ -2,13 +2,13 @@
 
 name: Build Android
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,17 +26,18 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install npm dependencies
-        run:  yarn
-        
+        run: yarn
+
       - name: Build Android Release
         run: |
           cd android && ./gradlew assembleRelease
-      
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
           name: release
           path: android/app/build/outputs/apk/release/app-release.apk
-          
+
       - name: Upload File
-        run: curl -X POST "https://file.io/" -H  "accept: application/json" -H  "Authorization: Bearer R6IP2KN.2NXB9H1-F7TMJ1E-PH5QFBY-EYFR657" -H  "Content-Type: multipart/form-data" -F "expires=2021-12-31" -F "maxDownloads=1" -F "autoDelete=true" -F "file=@android/app/build/outputs/apk/release/app-release.apk;type=application/vnd.android.package-archive"
+        run: >-
+          curl -X POST "https://file.io/" -H  "accept: application/json" -H  "Authorization: Bearer R6IP2KN.2NXB9H1-F7TMJ1E-PH5QFBY-EYFR657" -H  "Content-Type: multipart/form-data" -F "expires=2021-12-31" -F "maxDownloads=1" -F "autoDelete=true" -F "file=@android/app/build/outputs/apk/release/app-release.apk;type=application/vnd.android.package-archive"
