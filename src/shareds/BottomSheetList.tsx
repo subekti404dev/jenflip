@@ -52,8 +52,8 @@ export default function BottomSheetList(props: BottomSheetListProps) {
                     <Image
                       source={d.logo}
                       style={{
-                        width: (90).scale(),
-                        height: (20).scale(),
+                        width: (70).scale(),
+                        height: (23).scale(),
                         resizeMode: 'contain',
                       }}
                     />

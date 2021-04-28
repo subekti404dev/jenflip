@@ -1,7 +1,6 @@
 import moment from 'moment';
 import React from 'react';
 import {
-  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -14,7 +13,6 @@ import Icons from '../../assets/icons';
 import Images from '../../assets/images';
 import UserService from '../../services/UserService';
 const _ = utils._;
-import RBSheet from 'react-native-raw-bottom-sheet';
 import {
   WelcomeLoader,
   CardLoader,
@@ -40,7 +38,10 @@ export default function Home(props: any) {
     setLoading(false);
   };
 
-  let bsRef: any = null;
+  let bsTransferRef: any = null;
+  let bsWalletRef: any = null;
+  let bsPulsaRef: any = null;
+  let bsElectricRef: any = null;
 
   return (
     <>
@@ -94,14 +95,38 @@ export default function Home(props: any) {
                   name={'Transfer'}
                   icon={Icons.send}
                   onPress={() => {
-                    if (bsRef) {
-                      bsRef.open();
+                    if (bsTransferRef) {
+                      bsTransferRef.open();
                     }
                   }}
                 />
-                <QuickButton name={'Wallet'} icon={Icons.wallet} />
-                <QuickButton name={'Pulsa'} icon={Icons.phone} />
-                <QuickButton name={'Listrik'} icon={Icons.electric} />
+                <QuickButton
+                  name={'Wallet'}
+                  icon={Icons.wallet}
+                  onPress={() => {
+                    if (bsWalletRef) {
+                      bsWalletRef.open();
+                    }
+                  }}
+                />
+                <QuickButton
+                  name={'Pulsa'}
+                  icon={Icons.phone}
+                  onPress={() => {
+                    if (bsPulsaRef) {
+                      bsPulsaRef.open();
+                    }
+                  }}
+                />
+                <QuickButton
+                  name={'Listrik'}
+                  icon={Icons.electric}
+                  onPress={() => {
+                    if (bsElectricRef) {
+                      bsElectricRef.open();
+                    }
+                  }}
+                />
               </View>
             </QuickLoader>
           </Padder>
@@ -129,12 +154,24 @@ export default function Home(props: any) {
         </View>
         <BottomSheetList
           bsRef={(ref: any) => {
-            bsRef = ref;
+            bsTransferRef = ref;
           }}
           title={'Transfer via'}
           data={[
             {name: 'Jenius', logo: Images.jenius_logo},
             {name: 'Flip', logo: Images.flip_logo},
+          ]}
+        />
+        <BottomSheetList
+          bsRef={(ref: any) => {
+            bsWalletRef = ref;
+          }}
+          title={'Select wallet'}
+          data={[
+            {name: 'OVO', logo: Images.wallet.ovo},
+            {name: 'GOPAY', logo: Images.wallet.gopay},
+            {name: 'DANA', logo: Images.wallet.dana},
+            {name: 'LinkAja', logo: Images.wallet.linkaja},
           ]}
         />
       </SafeAreaView>
