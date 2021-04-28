@@ -52,9 +52,9 @@ jobs:
           # Required mail subject:
           subject: Github Actions job result
           # Required recipients' addresses:
-          to: ghost.of.inu@gmail.com
+          to: urip.subekti13@gmail.com
           # Required sender full name (address can be skipped):
-          from: Luke Skywalker # <user@example.com>
+          from: Gembel Botak # <user@example.com>
           # Optional plain body:
           body: Build job of ${{github.repository}} completed successfully!
           # Optional attachments:
