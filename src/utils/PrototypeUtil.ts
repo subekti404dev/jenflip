@@ -1,6 +1,9 @@
+import {utils} from 'urip-rn-kit';
+
 declare global {
   interface Number {
     toRupiah(withSymbol?: boolean): string;
+    scale(): number;
   }
   interface String {
     fromRupiah(): number;
@@ -18,6 +21,10 @@ Number.prototype.toRupiah = function (withSymbol?: boolean) {
     .join('');
 
   return withSymbol ? 'Rp ' + rupiah : rupiah;
+};
+
+Number.prototype.scale = function () {
+  return utils.sizeMatters.scale(Number(this));
 };
 
 String.prototype.fromRupiah = function () {

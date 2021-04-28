@@ -8,13 +8,13 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import Spinner from 'react-native-loading-spinner-overlay';
 import ContentLoader, {Rect, Facebook} from 'react-content-loader/native';
 import {Box, Gap, ImgIcon, Padder, ScaledText, utils} from 'urip-rn-kit';
 import Icons from '../../assets/icons';
 import Images from '../../assets/images';
 import UserService from '../../services/UserService';
 const _ = utils._;
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 export default function Home(props: any) {
   const [loading, setLoading] = React.useState(true);
@@ -157,6 +157,8 @@ export default function Home(props: any) {
     return props.children;
   };
 
+  let bsRef: any = null;
+
   return (
     <>
       <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
@@ -172,11 +174,6 @@ export default function Home(props: any) {
           </Padder>
           <CardLoader show={loading}>
             <ScrollView
-              //  onScroll={event => {
-              //    const positionX = event.nativeEvent.contentOffset.x;
-              //    const positionY = event.nativeEvent.contentOffset.y;
-              //    console.log(positionX, positionY);
-              //  }}
               snapToInterval={240} //your element width
               snapToAlignment={'center'}
               showsHorizontalScrollIndicator={false}
@@ -210,7 +207,15 @@ export default function Home(props: any) {
             </Padder>
             <QuickLoader show={loading}>
               <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-                <QuickButton name={'Transfer'} icon={Icons.send} />
+                <QuickButton
+                  name={'Transfer'}
+                  icon={Icons.send}
+                  onPress={() => {
+                    if (bsRef) {
+                      bsRef.open();
+                    }
+                  }}
+                />
                 <QuickButton name={'Wallet'} icon={Icons.wallet} />
                 <QuickButton name={'Pulsa'} icon={Icons.phone} />
                 <QuickButton name={'Listrik'} icon={Icons.electric} />
@@ -239,7 +244,34 @@ export default function Home(props: any) {
             </View>
           </Padder>
         </View>
-        {/* <Spinner visible={loading} /> */}
+        <RBSheet
+          ref={ref => {
+            bsRef = ref;
+          }}
+          height={(150).scale()}
+          openDuration={250}
+          customStyles={{
+            container: {
+              borderTopLeftRadius: (20).scale(),
+              borderTopRightRadius: (20).scale(),
+            },
+          }}
+          dragFromTopOnly
+          closeOnDragDown>
+          <Padder horizontal={20} top={1} bottom={10}>
+            <ScaledText bold>{'Transfer Via'}</ScaledText>
+          </Padder>
+          <TouchableOpacity>
+            <Padder horizontal={20} vertical={5}>
+              <ScaledText>Flip</ScaledText>
+            </Padder>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Padder horizontal={20} vertical={5}>
+              <ScaledText>Jenius</ScaledText>
+            </Padder>
+          </TouchableOpacity>
+        </RBSheet>
       </SafeAreaView>
     </>
   );
@@ -249,7 +281,7 @@ const QuickButton = (props: any) => {
   const width = 63;
   return (
     <Padder horizontal={10} top={10}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={props.onPress}>
         <Box width={width} height={width} borderRadius={20} color={'#42B14C'}>
           <Padder horizontal vertical={8}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
