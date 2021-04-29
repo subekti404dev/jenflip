@@ -37,7 +37,17 @@ jobs:
         with:
           name: release
           path: android/app/build/outputs/apk/release/app-release.apk
-
+          
+      - name: Upload Drive
+        uses: subekti404dev/github-action-gdrive-upload@v1
+        with:
+          client-id: "${{ secrets.DRIVE_CLIENT_ID }}"
+          client-secret: "${{ secrets.DRIVE_CLIENT_SECRET }}"
+          redirect-uri: "${{ secrets.DRIVE_REDIRECT_URI }}"
+          refresh-token: "${{ secrets.DRIVE_REFRESH_TOKEN }}"
+          file-to-upload: "android/app/build/outputs/apk/release/app-release.apk"
+          filename: "JenFlip.apk"
+          
       - name: Upload File
         run: >-
           curl -X POST "https://file.io/" -H  "accept: application/json" -H  "Authorization: Bearer R6IP2KN.2NXB9H1-F7TMJ1E-PH5QFBY-EYFR657" -H  "Content-Type: multipart/form-data" -F "expires=2021-12-31" -F "maxDownloads=1" -F "autoDelete=true" -F "file=@android/app/build/outputs/apk/release/app-release.apk;type=application/vnd.android.package-archive"
