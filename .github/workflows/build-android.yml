@@ -39,7 +39,7 @@ jobs:
           path: android/app/build/outputs/apk/release/app-release.apk
           
       - name: Upload Drive
-        uses: subekti404dev/github-action-gdrive-upload@v1
+        uses: subekti404dev/github-action-gdrive-upload@main
         with:
           client-id: "${{ secrets.DRIVE_CLIENT_ID }}"
           client-secret: "${{ secrets.DRIVE_CLIENT_SECRET }}"
