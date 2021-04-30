@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {
@@ -9,8 +8,8 @@ import {
   Text,
 } from 'react-native';
 import NavigationUtil from '../../utils/NavigationUtil';
-import StorageKey from '../../constants/StorageKeyConstant';
 import CredentialUtil from '../../utils/CredentialUtil';
+import AppRouteKeys from '../../../AppRouteKeys';
 
 type ProfileScreenNavigationProp = StackNavigationProp<any>;
 
@@ -26,15 +25,15 @@ const Boot = (props: Props) => {
   const checkStorage = async () => {
     const jeniusData = await CredentialUtil.jenius();
     if (!jeniusData) {
-      NavigationUtil.reset(props.navigation, 'Jenius');
+      NavigationUtil.reset(props.navigation, AppRouteKeys.Login.Jenius);
       return;
     }
     const flipData = await CredentialUtil.flip();
     if (!flipData) {
-      NavigationUtil.reset(props.navigation, 'Flip');
+      NavigationUtil.reset(props.navigation, AppRouteKeys.Login.Flip);
       return;
     }
-    NavigationUtil.reset(props.navigation, 'Home');
+    NavigationUtil.reset(props.navigation, AppRouteKeys.Home);
   };
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
-import {Padder, ScaledText, utils} from 'urip-rn-kit';
+import {Gap, Padder, ScaledText, utils} from 'urip-rn-kit';
 
 const _ = utils._;
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -19,10 +19,14 @@ interface BottomSheetListProps {
 }
 
 export default function BottomSheetList(props: BottomSheetListProps) {
-  const bsHeight = 85 + (props.data || []).length * 35;
+  const bsHeight = 88 + (props.data || []).length * 37;
+  let bsRef: any = null;
   return (
     <RBSheet
-      ref={ref => props.bsRef(ref)}
+      ref={ref => {
+        props.bsRef(ref);
+        bsRef = ref;
+      }}
       height={(props.height || bsHeight).scale()}
       openDuration={250}
       customStyles={{
@@ -42,7 +46,11 @@ export default function BottomSheetList(props: BottomSheetListProps) {
         const isLast = (props.data || []).length - 1 === i;
         return (
           <View key={i}>
-            <TouchableOpacity onPress={d.onPress}>
+            <TouchableOpacity
+              onPress={() => {
+                if (d.onPress) d.onPress();
+                if (bsRef) bsRef.close();
+              }}>
               <Padder horizontal={20} vertical={5}>
                 <View style={{flexDirection: 'row'}}>
                   <View style={{flex: 1}}>

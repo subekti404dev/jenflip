@@ -6,13 +6,14 @@ import Images from '../../assets/images';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import StorageKey from '../../constants/StorageKeyConstant';
 import NavigationUtil from '../../utils/NavigationUtil';
+import AppRouteKeys from '../../../AppRouteKeys';
 const {FlipSDK} = require('flip-sdk');
 
 interface Props {
   navigation: any;
 }
 
-export default function Flip(props: Props) {
+export default function LoginFlip(props: Props) {
   const [loading, setLoading] = React.useState(false);
 
   const [email, setEmail] = React.useState('');
@@ -26,7 +27,7 @@ export default function Flip(props: Props) {
       const data = {token, email, password};
       await AsyncStorage.setItem(StorageKey.Flip, JSON.stringify(data));
       setLoading(false);
-      NavigationUtil.reset(props.navigation, 'Home');
+      NavigationUtil.reset(props.navigation, AppRouteKeys.Home);
     } catch (error) {
       setLoading(false);
       Alert.alert('Error', error.message);

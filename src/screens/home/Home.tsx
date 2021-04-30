@@ -21,6 +21,8 @@ import {
   HistoryLoader,
 } from './HomeLoader';
 import BottomSheetList from '../../shareds/BottomSheetList';
+import NavigationUtil from '../../utils/NavigationUtil';
+import AppRouteKeys from '../../../AppRouteKeys';
 
 export default function Home(props: any) {
   const [loading, setLoading] = React.useState(true);
@@ -158,7 +160,7 @@ export default function Home(props: any) {
           }}
           title={'Transfer via'}
           data={[
-            {name: 'Jenius', logo: Images.jenius_logo},
+            {name: 'Jenius', logo: Images.jenius_logo, onPress: () => NavigationUtil.push(props.navigation, AppRouteKeys.Transfer.Jenius)},
             {name: 'Flip', logo: Images.flip_logo},
           ]}
         />

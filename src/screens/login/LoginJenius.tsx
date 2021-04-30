@@ -6,13 +6,14 @@ import Images from '../../assets/images';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import StorageKey from '../../constants/StorageKeyConstant';
 import NavigationUtil from '../../utils/NavigationUtil';
+import AppRouteKeys from '../../../AppRouteKeys';
 const JeniusSDK = require('jenius-sdk');
 
 interface Props {
   navigation: any;
 }
 
-export default function Jenius(props: Props) {
+export default function LoginJenius(props: Props) {
   const [loading, setLoading] = React.useState(false);
   const [screenIndex, setScreenIndex] = React.useState(0);
   const [data, setData]: [
@@ -52,7 +53,7 @@ export default function Jenius(props: Props) {
         JSON.stringify(credentials),
       );
       setLoading(false);
-      NavigationUtil.reset(props.navigation, 'Flip');
+      NavigationUtil.reset(props.navigation, AppRouteKeys.Login.Flip);
     } catch (error) {
       setLoading(false);
       Alert.alert('Error', error.message);
