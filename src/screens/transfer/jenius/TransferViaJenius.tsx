@@ -28,12 +28,15 @@ export default function TransferViaJenius() {
       <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
       <SafeAreaView style={{backgroundColor: '#FFF', flex: 1}}>
         <Switch
-          data={['Add New', 'Contact']}
+          data={['Contacts', 'Favorites']}
           initialIndex={0}
           onChange={x => setActiveMenuIndex(x)}
         />
         <RenderIf condition={activeMenuIndex === 0}>
-          <FlatList
+          <JeniusContact />
+        </RenderIf>
+        <RenderIf condition={activeMenuIndex === 1}>
+          {/* <FlatList
             data={bankList}
             keyExtractor={(v, i) => i.toString()}
             renderItem={({item, index}: {item: any; index: number}) => {
@@ -43,10 +46,7 @@ export default function TransferViaJenius() {
                 </ScaledText>
               );
             }}
-          />
-        </RenderIf>
-        <RenderIf condition={activeMenuIndex === 1}>
-          <JeniusContact />
+          /> */}
         </RenderIf>
       </SafeAreaView>
     </>
