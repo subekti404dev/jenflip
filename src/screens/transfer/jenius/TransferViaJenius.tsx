@@ -10,18 +10,10 @@ import {ScaledText} from 'urip-rn-kit';
 import TransferService from '../../../services/TransferService';
 import RenderIf from '../../../shareds/RenderIf';
 import JeniusContact from './JeniusContact';
+import AddNewJeniusContact from './AddNewJeniusContact';
 
 export default function TransferViaJenius() {
-  const [bankList, setBankList] = React.useState([]);
   const [activeMenuIndex, setActiveMenuIndex] = React.useState(0);
-  React.useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    const bankList = await TransferService.getJeniusBankList();
-    setBankList(bankList);
-  };
 
   return (
     <>
