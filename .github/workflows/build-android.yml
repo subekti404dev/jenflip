@@ -18,8 +18,6 @@ jobs:
       - name: Get Log URL
         id: get_log_url
         uses: subekti404dev/github-action-get-log-url@main
-        with: 
-          github_context: ${{ toJSON(github) }}
        
       - name: Echo
         run: echo "${{steps.get_log_url.outputs.result}}"
