@@ -14,9 +14,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
-        
+
       - name: Get Log URL
         id: get_log_url
+        uses: subekti404dev/github-action-get-log-url@main
         with: 
           github_context: ${{ toJSON(github) }}
        
