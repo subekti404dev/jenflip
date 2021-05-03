@@ -10,12 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-on: push
-
-jobs:
-  one:
-    runs-on: ubuntu-latest
-    steps:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
