@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {ScaledText} from 'urip-rn-kit';
+import {ScaledText, Gap} from 'urip-rn-kit';
 import TransferService from '../../../services/TransferService';
 import RenderIf from '../../../shareds/RenderIf';
 import JeniusContact from './JeniusContact';
@@ -19,6 +19,7 @@ export default function TransferViaJenius() {
     <>
       <StatusBar backgroundColor={'#FFF'} barStyle={'dark-content'} />
       <SafeAreaView style={{backgroundColor: '#FFF', flex: 1}}>
+        <Gap vertical/>
         <Switch
           data={['Contacts', 'Favorites']}
           initialIndex={0}
