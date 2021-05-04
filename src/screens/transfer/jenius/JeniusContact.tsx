@@ -17,11 +17,13 @@ export default function JeniusContact() {
     getData();
   }, []);
 
-  const getData = async () => {
-    if (jenius.contacts.length === 0) setLoading(true);
-    const response = await ContactService.getJeniusContact();
-    dispatch({type: JENIUS_ACTION_TYPE.ASSIGN_CONTACT, payload: response.data});
-    setLoading(false);
+  const getData = async (force?: boolean) => {
+    if (jenius.contacts.length === 0 || force) {
+      setLoading(true);
+      const response = await ContactService.getJeniusContact();
+      dispatch({type: JENIUS_ACTION_TYPE.ASSIGN_CONTACT, payload: response.data});
+      setLoading(false);
+    }
   };
 
   const ItemLoader = (props: any) => {
