@@ -37,7 +37,7 @@ export default function LoginFlip(props: Props) {
   return (
     <>
       <StatusBar backgroundColor={'#FFF'} />
-      <SafeAreaView style={{backgroundColor: '#FFF'}}>
+      <SafeAreaView style={{backgroundColor: '#FFF', height: '100%'}}>
         <Padder all={20}>
           <Col alignCenter>
             <Image
