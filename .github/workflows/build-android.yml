@@ -25,21 +25,15 @@ jobs:
             yarn
             cd ios && pod install
 
-      - name: Run ios
-        run: npx react-native run-ios --configuration=release
+      - name: Build Android Release
+        run: |
+          cd android && ./gradlew assembleRelease
 
-      - name: LS
-        run: cd ios && ls -la
-
-      # - name: Build Android Release
-      #   run: |
-      #     cd android && ./gradlew assembleRelease
-
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: release
-      #     path: android/app/build/outputs/apk/release/app-release.apk
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: release
+          path: android/app/build/outputs/apk/release/app-release.apk
           
       # - name: Upload Drive
       #   uses: subekti404dev/github-action-gdrive-upload@main
@@ -51,7 +45,7 @@ jobs:
       #     file-to-upload: "android/app/build/outputs/apk/release/app-release.apk"
       #     filename: "JenFlip.apk"
           
-      # - name: Upload File
-      #   run: >-
-      #     curl -X POST "https://file.io/" -H  "accept: application/json" -H  "Authorization: Bearer R6IP2KN.2NXB9H1-F7TMJ1E-PH5QFBY-EYFR657" -H  "Content-Type: multipart/form-data" -F "expires=2021-12-31" -F "maxDownloads=1" -F "autoDelete=true" -F "file=@android/app/build/outputs/apk/release/app-release.apk;type=application/vnd.android.package-archive"
+      - name: Upload File
+        run: >-
+          curl -X POST "https://file.io/" -H  "accept: application/json" -H  "Authorization: Bearer R6IP2KN.2NXB9H1-F7TMJ1E-PH5QFBY-EYFR657" -H  "Content-Type: multipart/form-data" -F "expires=2021-12-31" -F "maxDownloads=1" -F "autoDelete=true" -F "file=@android/app/build/outputs/apk/release/app-release.apk;type=application/vnd.android.package-archive"
      
