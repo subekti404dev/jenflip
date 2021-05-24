@@ -21,7 +21,9 @@ jobs:
         run: export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
       - name: Install dependencies
-        run: yarn
+        run: |
+            yarn
+            cd ios && pod install
 
       - name: Run ios
         run: npx react-native run-ios --configuration=release
