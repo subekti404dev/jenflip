@@ -24,7 +24,7 @@ jobs:
         run: yarn
 
       - name: Run ios
-        run: npx react-native ruin-ios --configuration=release
+        run: npx react-native run-ios --configuration=release
 
       - name: LS
         run: cd ios && ls -la
