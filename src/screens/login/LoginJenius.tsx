@@ -123,7 +123,7 @@ function JeniusOTP(props: any) {
   const [otp, setOtp] = React.useState('');
 
   return (
-    <SafeAreaView style={{backgroundColor: '#FFF', height: '100%}}>
+    <SafeAreaView style={{backgroundColor: '#FFF', height: '100%'}}>
       <Padder all={20}>
         <Col alignCenter>
           <Image
